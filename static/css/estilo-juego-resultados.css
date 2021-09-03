@@ -1,0 +1,38 @@
+.fondo {
+    background-image: url('../assets/fondo-resultados.jpg');
+    background-position: center center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.cuadro {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding-top: 10%;
+    padding-left: 5%;
+}
+
+.social {
+    margin-top: 1em;
+}
+
+.social .btn-twitter { background: #00acee;}
+
+.social .btn-whatsapp {background: greenyellow;}
+
+.botones-finales {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2%;
+}
+
+img.imagen-trofeo {
+    width: 50px
+}

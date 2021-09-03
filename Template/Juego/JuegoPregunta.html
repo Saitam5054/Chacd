@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href='{% static "css/estilo-juego-preguntas.css" %}' type="text/css">
+    <title>Juego</title>
+</head>
+<body>
+    <div class="fondo">
+        <form action="" method="POST"> {% csrf_token %}
+            {% if mensaje %}
+                <script language="javascript" type="text/javascript">
+                    alert("{{ mensaje }}")
+                </script>
+            {% endif %} 
+            <div class="zona-notas">
+                <h2> Categoria: {{ categoria }} </h2>
+                <h2> Pregunta <{{ numeropregunta }}> </h2>
+            </div>    
+            <div class="zona-pregunta">
+                <h1> {{ pregunta }} </h1>
+            </div>
+            <div class="zona-respuestas">
+                {% if tipoopcion %}
+                        {% for respuesta in respuestas %}
+                            <input type="radio" name="respuestaactual" id="{{ respuesta.id }}" value="{{ respuesta.id }}" checked>
+                            <label class="btn btn-outline-secondary" for="{{ respuesta.id }}">
+                                {{ respuesta.respuesta }}
+                            </label>
+                        {% endfor %}
+                {% else %}
+                        {% for respuesta in respuestas %}
+                            <input type="checkbox" id="{{ respuesta.id }}" name="{{ respuesta.id }}"  value="{{ respuesta.id }}" autocomplete="off">
+                            <label class="btn btn-outline-secondary" for="{{ respuesta.id }}">
+                                {{ respuesta.respuesta }}
+                            </label>
+                        {% endfor %}
+                {% endif%}
+            </div>
+            <div class="boton-final">
+                <button type="sumbit" class="btn btn-secondary" >Enviar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

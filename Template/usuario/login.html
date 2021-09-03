@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/estilo-login.css' %}">
+</head>
+<body>
+  <nav class="navbar navbar-dark bg-primary">
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link active text-white" aria-current="page" href="/">Inicio</a>
+      </li>
+        {% if request.user.username %}
+          <li class="nav-item">
+            <a class="nav-link text-white" text-white href="/logout">Cerrar sesión</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">{{request.user.username}}</a>
+          </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/login">Iniciar sesión</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/registro">Registrarse</a>
+            </li>
+    
+            {% endif %}
+    </ul>
+    </nav>
+
+  <div class="fondo"> 
+    <div class="row justify-content-md-center m-0 p-5">
+      <div class="mb-3 col-lg-6">
+        {% if request.user.username %}
+          <p class="text-justify">Ya se encuentra logueado</p>
+          <a class="btn btn-danger" text-white href="/logout">Cerrar sesión</a>
+        {% else %}
+          <form method="post">
+              {% csrf_token %}
+              <div class="mb-3">
+              <label for="username" class="form-label">Nombre de usuario</label>
+              <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" name="password" id="password">
+            </div>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+            <a href="/registro" class="btn btn-danger">Registrar usuario</a>
+          </form>
+        {% endif %}
+      </div>
+    </div>
+  </div> 
+</body>
+</html>

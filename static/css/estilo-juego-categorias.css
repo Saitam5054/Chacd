@@ -1,0 +1,20 @@
+.fondo {
+    background-image: url('../assets/fondo-categorias.jpg');
+    background-position: center center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+    
+}
+
+.zona-categorias {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15%;
+}
+
+.zona-categorias h1 {
+    color: white;
+}

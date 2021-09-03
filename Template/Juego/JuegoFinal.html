@@ -1,0 +1,41 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="{% static 'css/estilo-juego-resultados.css' %}" rel="stylesheet">
+</head>
+
+    {% if mensaje %}
+        <script language="javascript" type="text/javascript">
+                alert("{{ mensaje }}")
+        </script>
+    {% endif %}
+    <div class="fondo">
+        <div class="cuadro">
+            <h1> {{ mensaje }} </h1>
+            {% if trofeo %}
+                <h2>Has ganado una copa ¡Felicitaciones!</h2>
+                <img class="imagen-trofeo" src="{% static 'assets/trofeo.png' %}" alt="Trofeo">
+            {% endif %}
+            <h2>Contestaste  {{ numerocontestado }}/{{ numerototalpreguntas }}</h2>
+            <h2>De la categoria: {{ categoriapregunta }}</h2>
+            <h3>Compártelo en tus redes sociales</h3>
+            <div class="social">
+                <a href="https://api.whatsapp.com/send?text=He conseguido contestar {{numerocontestado}}/{{numerototalpreguntas}} preguntas de la categoría pruébalo en  {{url}}" id="share-wa" class="btn btn-whatsapp"><i class="fa fa-whatsapp"></i></a>
+                <a href="https://twitter.com/intent/tweet?text= He%20conseguido%20contestar%20{{numerocontestado}}/{{numerototalpreguntas}}%20preguntas%20de%20la%20categoría%20{{categoriapregunta}}%20pruébalo%20en&url={{url}}&hashtags=PreguntasChaco" id="share-tw" class="btn btn-twitter"><i class="fa fa-twitter"></i></a>
+            </div>
+            <div class="botones-finales">
+                <a href="/" class="btn btn-outline-success" role="button">Inicio</a>
+                <a href="/juego" class="btn btn-outline-success" role="button">Volver a Jugar</a>
+            </div>
+        </div>
+    </div>
+</html>

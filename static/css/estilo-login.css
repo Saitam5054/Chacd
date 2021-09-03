@@ -1,0 +1,11 @@
+.fondo {
+    background-image: url('../assets/fondo1-log-in.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-bottom: 30%;
+}
+
+.form-label {
+    color: white;
+}
